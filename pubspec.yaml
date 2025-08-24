@@ -1,0 +1,24 @@
+name: flutter_id_datetime_formatter
+description: Format Indonesian local date and time (WIB, WITA, WIT) in Flutter using intl and timezone detection.
+version: 0.0.1
+
+homepage: https://github.com/normndakbr/flutter_id_datetime_formatter
+repository: https://github.com/normndakbr/flutter_id_datetime_formatter
+issue_tracker: https://github.com/normndakbr/flutter_id_datetime_formatter/issues
+
+environment:
+  sdk: ^3.8.1
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  intl: ^0.18.0
+  indonesian_timezone: ^1.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
