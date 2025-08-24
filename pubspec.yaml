@@ -14,7 +14,6 @@ dependencies:
   flutter:
     sdk: flutter
   intl: ^0.18.0
-  indonesian_timezone: ^1.0.0
 
 dev_dependencies:
   flutter_test:

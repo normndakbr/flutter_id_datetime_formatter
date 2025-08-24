@@ -1,48 +1,15 @@
 import 'package:intl/intl.dart';
-import 'package:indonesian_timezone/indonesian_timezone.dart';
+
 
 String formatTanggal(DateTime dateTime) {
   return DateFormat('dd MMM yyyy, HH:mm', 'id_ID').format(dateTime);
 }
 
 String formatTanggalIndonesia(DateTime dateTime) {
-  final local = dateTime.toLocal();
-  final idtz = IdTimezone(date: dateTime);
-  final offset = local.timeZoneOffset.inHours;
-  final formatter = DateFormat('dd MMMM yyyy, HH:mm', 'id_ID');
-
-  if (offset == 7) {
-    final wib = idtz.toWIB();
-    if (wib != null) return '${formatter.format(wib)} WIB';
-  } else if (offset == 8) {
-    final wita = idtz.toWITA();
-    if (wita != null) return '${formatter.format(wita)} WITA';
-  } else if (offset == 9) {
-    final wit = idtz.toWIT();
-    if (wit != null) return '${formatter.format(wit)} WIT';
-  }
-
-  return '${formatter.format(local)}';
-}
-
-String formatTanggalIndonesia2(DateTime dateTime) {
-  final local = dateTime.toLocal();
-  final idtz = IdTimezone(date: dateTime);
-  final offset = local.timeZoneOffset.inHours;
-  final formatter = DateFormat('dd MM yyyy, HH:mm', 'id_ID');
-
-  if (offset == 7) {
-    final wib = idtz.toWIB();
-    if (wib != null) return '${formatter.format(wib)} WIB';
-  } else if (offset == 8) {
-    final wita = idtz.toWITA();
-    if (wita != null) return '${formatter.format(wita)} WITA';
-  } else if (offset == 9) {
-    final wit = idtz.toWIT();
-    if (wit != null) return '${formatter.format(wit)} WIT';
-  }
-
-  return '${formatter.format(local)}';
+  final tanggal = DateFormat('dd MMMM yyyy', 'id_ID').format(dateTime);
+  final jam = DateFormat('HH.mm').format(dateTime);
+  final zona = getIndonesianTimezoneLabel(dateTime);
+  return '$tanggal, $jam $zona';
 }
 
 String namaBulan(int bulan) {
@@ -56,4 +23,18 @@ String namaBulan(int bulan) {
 
 String formatTanggalPendek(DateTime date) {
   return '${date.day} ${namaBulan(date.month)} ${date.year}';
+}
+
+String getIndonesianTimezoneLabel([DateTime? dateTime]) {
+  final offset = (dateTime ?? DateTime.now()).timeZoneOffset;
+
+  if (offset == const Duration(hours: 7)) {
+    return 'WIB';
+  } else if (offset == const Duration(hours: 8)) {
+    return 'WITA';
+  } else if (offset == const Duration(hours: 9)) {
+    return 'WIT';
+  } else {
+    return 'GMT${offset.isNegative ? '' : '+'}${offset.inHours}';
+  }
 }
