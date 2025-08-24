@@ -22,6 +22,11 @@ void main() {
   test('formatTanggalIndonesia should contain timezone label', () {
     final date = DateTime(2025, 8, 24, 8, 0);
     final result = formatTanggalIndonesia(date);
-    expect(result.contains('WIB') || result.contains('WITA') || result.contains('WIT'), true);
+    expect(
+      result.contains('WIB') ||
+          result.contains('WITA') ||
+          result.contains('WIT'),
+      true,
+    );
   });
 }
