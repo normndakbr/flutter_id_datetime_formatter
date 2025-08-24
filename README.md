@@ -9,8 +9,10 @@ Perfect for displaying formatted dates like: `24 August 2025, 08:00 WITA`
 
 - Format date using the Indonesian locale (`dd MMMM yyyy`)
 - Automatically detect Indonesian timezone (WIB, WITA, or WIT)
-- Support short date format like `24 Aug 2025`
-- Built on top of `intl` and [`indonesian_timezone`](https://pub.dev/packages/indonesian_timezone)
+- Gonna summon date format like 
+  - `24 Aug 2025`
+  - `24 Agu 2025, 08:00`
+  - `24 Agustus 2025, 08.00 WITA`
 
 ---
 
@@ -20,4 +22,4 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flutter_id_datetime_formatter: ^0.0.1
+  flutter_id_datetime_formatter: ^0.0.2
